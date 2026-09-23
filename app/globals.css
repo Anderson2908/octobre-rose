@@ -67,7 +67,8 @@ p { margin: 0; }
   gap: 16px;
   padding: 24px 96px 0;
 }
-.logo { display: block; height: 96px; width: auto; }
+/* « darken » fond le fond rose pâle du PNG dans ce qu'il y a derrière (page, cercle déco). */
+.logo { position: relative; display: block; height: 76px; width: auto; mix-blend-mode: darken; }
 .badge {
   font-size: 14px;
   font-weight: 500;
@@ -103,7 +104,7 @@ p { margin: 0; }
   color: var(--accent);
 }
 .intro h1 {
-  font-size: clamp(40px, 5vw, 68px);
+  font-size: clamp(38px, 4vw, 58px);
   line-height: 1.04;
   letter-spacing: -0.02em;
 }

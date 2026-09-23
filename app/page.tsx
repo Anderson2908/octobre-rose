@@ -21,7 +21,7 @@ export default function Accueil() {
       <main className="contenu">
         <section className="intro">
           <p className="surtitre">Octobre Rose · Le grand pronostic</p>
-          <h1>Combien allons-nous récolter <em>ensemble</em>&nbsp;?</h1>
+          <h1>Combien allons-<br />nous récolter <em>ensemble</em>&nbsp;?</h1>
           <p className="texte">
             Tout le mois, nous nous mobilisons contre le cancer du sein. 1&nbsp;€ reversé pour chaque
             commande à 1&nbsp;€ près. Devinez le montant total qui sera reversé à {jeu.association}&nbsp;:
