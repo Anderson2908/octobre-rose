@@ -10,13 +10,36 @@ export type Pronostic = {
 
 const CLE = 'octobre-rose:pronostics';
 
-let client: Redis | null = null;
+type Stockage = Pick<Redis, 'hsetnx' | 'hgetall'>;
 
-function redis(): Redis {
+let client: Stockage | null = null;
+
+// En local (npm run dev) sans base configurée, les réponses restent en mémoire
+// le temps que le serveur tourne. En production, la base est obligatoire.
+function stockageMemoire(): Stockage {
+  // Sur globalThis : chaque route peut charger sa propre copie de ce module en dev.
+  const g = globalThis as { __pronostics?: Map<string, unknown> };
+  const donnees = (g.__pronostics ??= new Map<string, unknown>());
+  return {
+    hsetnx: async (_cle: string, champ: string, valeur: unknown) => {
+      if (donnees.has(champ)) return 0;
+      donnees.set(champ, valeur);
+      return 1;
+    },
+    hgetall: async () => Object.fromEntries(donnees),
+  } as unknown as Stockage;
+}
+
+function redis(): Stockage {
   if (client) return client;
   const url = process.env.KV_REST_API_URL ?? process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TOKEN;
   if (!url || !token) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Mode test : aucune base configurée, les pronostics sont gardés en mémoire.');
+      client = stockageMemoire();
+      return client;
+    }
     throw new Error('Base de données non configurée (variables KV_REST_API_URL / KV_REST_API_TOKEN manquantes).');
   }
   client = new Redis({ url, token });

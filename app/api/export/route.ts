@@ -6,7 +6,8 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 function motDePasseValide(saisi: string): boolean {
-  const attendu = process.env.ADMIN_PASSWORD;
+  // En local sans mot de passe configuré, « test » ouvre l'export.
+  const attendu = process.env.ADMIN_PASSWORD ?? (process.env.NODE_ENV !== 'production' ? 'test' : undefined);
   if (!attendu) return false;
   const a = createHash('sha256').update(saisi).digest();
   const b = createHash('sha256').update(attendu).digest();

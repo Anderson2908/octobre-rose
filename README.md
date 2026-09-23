@@ -9,6 +9,16 @@ Les réponses sont exportées en Excel depuis la page `/admin`.
 - 1 pronostic par personne (même nom + prénom, sans tenir compte des accents ni des majuscules)
 - Clôture automatique à la date réglée dans `lib/config.ts` (10/10 à 23 h 59)
 
+## Lancer en local
+
+```bash
+npm install
+npm run dev
+```
+
+Puis ouvrir http://localhost:3000. Sans base configurée, les réponses sont gardées en mémoire
+(perdues à l'arrêt du serveur) et le mot de passe de `/admin` est `test`.
+
 ## Mise en ligne sur Vercel (rien à installer sur le PC)
 
 1. Créer un dépôt sur **github.com** (bouton **New**) puis **Add file → Upload files** et glisser
