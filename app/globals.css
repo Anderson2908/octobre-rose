@@ -1,0 +1,271 @@
+:root {
+  --fond: #fff6f8; /* identique au fond du logo */
+  --fond-champ: #fffbfc;
+  --blanc: #ffffff;
+  --encre: #2a1320;
+  --texte: #5a3d4a;
+  --texte-doux: #6b4a58;
+  --placeholder: #9a7f8b;
+  --accent: #c2255c;
+  --accent-fonce: #a61e4d;
+  --rose-pale: #fbe3eb;
+  --rose-deco: #f7d3df;
+  --bordure: #ebcbd7;
+  --bordure-carte: #f6d3df;
+  --erreur: #b3261e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fond);
+  color: var(--encre);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2 { font-family: var(--font-display), Georgia, serif; font-weight: 500; margin: 0; }
+p { margin: 0; }
+
+/* ---------- Page ---------- */
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.deco { position: absolute; pointer-events: none; }
+.deco-plein {
+  right: -180px; top: -160px;
+  width: 620px; height: 620px;
+  border-radius: 50%;
+  background: var(--rose-pale);
+}
+.deco-contour {
+  left: -120px; bottom: -220px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  border: 2px solid #f4c2d3;
+}
+.deco-ruban {
+  left: 30%; top: 140px;
+  width: 440px; height: auto;
+  color: var(--rose-deco);
+  opacity: 0.7;
+  transform: rotate(8deg);
+}
+
+.entete {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 96px 0;
+}
+.logo { display: block; height: 96px; width: auto; }
+.badge {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--blanc);
+  border: 1px solid #f4c2d3;
+  color: var(--texte-doux);
+  white-space: nowrap;
+}
+
+.contenu {
+  position: relative;
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 576px);
+  gap: 96px;
+  align-items: center;
+  padding: 32px 96px 64px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ---------- Colonne texte ---------- */
+
+.intro { display: flex; flex-direction: column; gap: 28px; }
+.surtitre {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.intro h1 {
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+.intro h1 em { color: var(--accent); font-style: italic; }
+.texte { font-size: 19px; line-height: 1.55; color: var(--texte); max-width: 520px; }
+
+.reperes { display: flex; gap: 32px; margin: 0; padding-top: 8px; }
+.reperes > div { display: flex; flex-direction: column; gap: 4px; }
+.reperes > div + div { padding-left: 32px; border-left: 1px solid #f0c4d3; }
+.reperes dt { font-family: var(--font-display), Georgia, serif; font-size: 32px; font-weight: 700; }
+.reperes dd { margin: 0; font-size: 15px; line-height: 1.35; color: var(--texte); }
+
+/* ---------- Carte ---------- */
+
+.carte {
+  background: var(--blanc);
+  border: 1px solid var(--bordure-carte);
+  border-radius: 28px;
+  padding: 48px;
+  box-shadow: 0 30px 60px -30px rgba(122, 20, 60, 0.28);
+}
+
+.formulaire { display: flex; flex-direction: column; gap: 24px; }
+.formulaire h2 { font-size: 32px; }
+.mention { margin-top: 6px; font-size: 15px; color: var(--texte-doux); }
+
+.ligne-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+.champ { display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 700; }
+.champ input {
+  height: 56px;
+  width: 100%;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 1.5px solid var(--bordure);
+  background: var(--fond-champ);
+  color: var(--encre);
+  font: inherit;
+  font-weight: 400;
+  font-size: 16px;
+}
+.champ input::placeholder { color: var(--placeholder); }
+.champ input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px #f9d5e1;
+}
+
+.montant { position: relative; display: flex; align-items: center; }
+.montant input {
+  height: 88px;
+  padding: 0 72px 0 24px;
+  border-radius: 18px;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  font-size: 40px;
+}
+.euro {
+  position: absolute;
+  right: 28px;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--accent);
+}
+.aide { font-size: 13px; font-weight: 400; color: var(--texte-doux); }
+
+.erreur {
+  font-size: 15px;
+  color: var(--erreur);
+  background: #fdecea;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.cta {
+  height: 64px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--blanc);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: background 0.15s;
+}
+.cta:hover { background: var(--accent-fonce); }
+.cta:focus-visible { outline: 3px solid var(--encre); outline-offset: 3px; }
+.cta:disabled { opacity: 0.7; cursor: wait; }
+
+/* ---------- Confirmation ---------- */
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding: 72px 0;
+}
+.pastille {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: var(--rose-pale);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.confirmation h2 { font-size: 36px; }
+.confirmation p { font-size: 17px; line-height: 1.5; color: var(--texte); max-width: 400px; }
+.bouton-secondaire {
+  height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1.5px solid var(--bordure);
+  background: var(--blanc);
+  color: var(--encre);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+.bouton-secondaire:hover { border-color: var(--accent); }
+
+/* ---------- Admin ---------- */
+
+.page-admin { align-items: center; justify-content: center; gap: 24px; padding: 24px 16px; }
+.page-admin .logo { height: 78px; }
+.carte-admin { position: relative; width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: 16px; }
+.carte-admin h1 { font-size: 32px; }
+
+/* ---------- Tablette & mobile ---------- */
+
+@media (max-width: 1100px) {
+  .contenu { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 24px 48px 48px; }
+  .entete { padding: 24px 48px 0; }
+  .deco-ruban { left: auto; right: -80px; top: 80px; width: 320px; }
+}
+
+@media (max-width: 640px) {
+  .entete { padding: 16px 16px 0; }
+  .logo { height: 64px; }
+  .badge { display: none; }
+  .contenu { padding: 16px 16px 40px; gap: 28px; }
+  .intro { gap: 16px; }
+  .texte { font-size: 16px; }
+  .reperes { gap: 16px; }
+  .reperes > div + div { padding-left: 16px; }
+  .reperes dt { font-size: 24px; }
+  .reperes dd { font-size: 13px; }
+  .carte { padding: 28px 20px; border-radius: 24px; }
+  .formulaire h2 { font-size: 26px; }
+  .ligne-2 { grid-template-columns: minmax(0, 1fr); }
+  .montant input { height: 72px; font-size: 32px; padding-left: 18px; }
+  .euro { right: 20px; font-size: 28px; }
+  .cta { height: 60px; font-size: 17px; }
+  .confirmation { padding: 32px 0; }
+  .confirmation h2 { font-size: 28px; }
+  .deco-ruban { width: 220px; right: -60px; opacity: 0.5; }
+}
