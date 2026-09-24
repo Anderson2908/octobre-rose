@@ -93,12 +93,12 @@ export function FormulairePronostic({ cloture, annonce }: Props) {
       <div className="ligne-2">
         <label className="champ">
           Nom
-          <input type="text" name="nom" autoComplete="family-name" placeholder="Dupont" required
+          <input type="text" name="nom" autoComplete="family-name" placeholder="Chapalin" required
             maxLength={60} value={nom} onChange={(e) => setNom(e.target.value)} />
         </label>
         <label className="champ">
           Prénom
-          <input type="text" name="prenom" autoComplete="given-name" placeholder="Camille" required
+          <input type="text" name="prenom" autoComplete="given-name" placeholder="Martin" required
             maxLength={60} value={prenom} onChange={(e) => setPrenom(e.target.value)} />
         </label>
       </div>
