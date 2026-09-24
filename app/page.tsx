@@ -3,6 +3,7 @@ import { FormulairePronostic } from './FormulairePronostic';
 import { RubanFond } from './Ruban';
 
 // Recalcule la page chaque minute pour que la clôture s'applique d'elle-même.
+// Marqueur de test de push : aucun effet sur la page.
 export const revalidate = 60;
 
 export default function Accueil() {
