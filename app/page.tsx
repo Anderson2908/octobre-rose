@@ -23,9 +23,10 @@ export default function Accueil() {
           <p className="surtitre">Octobre Rose · Le grand pronostic</p>
           <h1>Combien allons-<br />nous récolter <em>ensemble</em>&nbsp;?</h1>
           <p className="texte">
-            Tout le mois, nous nous mobilisons contre le cancer du sein. 1&nbsp;€ reversé pour chaque
-            commande à 1&nbsp;€ près. Devinez le montant total qui sera reversé à {jeu.association}&nbsp;:
-            le pronostic le plus proche remporte {jeu.lot}&nbsp;!
+            Tout le mois, nous nous mobilisons contre le cancer du sein. Devinez le montant total qui
+            sera reversé à {jeu.association}&nbsp;: à l’euro près&nbsp;!
+            <br />
+            La personne la plus proche de la somme finale remporte un GROS cadeau&nbsp;!
           </p>
           <dl className="reperes">
             <div><dt>1</dt><dd>pronostic<br />par personne</dd></div>
